@@ -79,6 +79,6 @@ class Link(models.Model):
                     response = requests.get(image_url)
                     image = StringIO(response.content)
                     self.image.save(os.path.basename(image_url), File(image))
-                self.is_update = True
+            self.is_update = True
 
         return self.is_update
