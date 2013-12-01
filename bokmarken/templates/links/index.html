@@ -37,7 +37,7 @@
 	  <div class="col-sm-6 col-md-4">
 	    <div class="thumbnail" style="padding: 0px;">
 	      <div class="caption" style="overflow: hidden; white-space: nowrap; text-overflow:ellipsis; font-weight: bold; color: #333;">
-		<span class="glyphicon glyphicon-bookmark"></span> <span>{{ link.title  }}</span>
+		<span class="glyphicon glyphicon-bookmark"></span> <span>{{ link.title|default:link.simple_url  }}</span>
 	      </div>
 	      <div class="caption" style="height: 92px; padding: 9px 0px; background-color: {{ colors|random }}; {% if link.image %}background-image: url('{{ link.image.url }}'); background-size: 100% auto; background-position: center; {% endif %}background-repeat: no-repeat;">
 	        {% if not link.image %}
