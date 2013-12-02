@@ -61,24 +61,34 @@ class Link(models.Model):
         if not self.is_update:
             response = requests.get(self.url)
             if response.status_code == 200:
-                soup = BeautifulSoup(response.text)
-                self.title = soup.title.string.encode('utf-8')
 
-                image_url = None
-
-                if not image_url:
-                    meta_tag = soup.find('meta', {'name': 'twitter:image'})
-                    if meta_tag:
-                        image_url = meta_tag['content']
-                if not image_url:
-                    meta_tag = soup.find('meta', {'property': 'og:image'})
-                    if meta_tag:
-                        image_url = meta_tag['content']
-
-                if image_url:
-                    response = requests.get(image_url)
+                if 'image/' in response.headers['content-type']:
+                    response = requests.get(self.url)
                     image = StringIO(response.content)
-                    self.image.save(os.path.basename(image_url), File(image))
+                    self.image.save(os.path.basename(self.url), File(image))
+
+                if 'text/html' in response.headers['content-type']:
+                    soup = BeautifulSoup(response.text)
+                    self.title = soup.title.string.encode('utf-8')
+
+                    image_url = None
+
+                    if not image_url:
+                        meta_tag = soup.find('meta', {'name': 'twitter:image'})
+                        if meta_tag and meta_tag.has_attr('content'):
+                            image_url = meta_tag.get('content')
+                        if meta_tag and meta_tag.has_attr('value'):
+                            image_url = meta_tag.get('value')
+
+                    if not image_url:
+                        meta_tag = soup.find('meta', {'property': 'og:image'})
+                        if meta_tag and meta_tag.has_attr('content'):
+                            image_url = meta_tag.get('content')
+
+                    if image_url:
+                        response = requests.get(image_url)
+                        image = StringIO(response.content)
+                        self.image.save(os.path.basename(image_url), File(image))
             self.is_update = True
 
         return self.is_update
