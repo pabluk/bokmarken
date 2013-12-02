@@ -1,29 +1,17 @@
 {% extends "base.html" %}
 {% load staticfiles %}
 {% block content %}
-      <style>
-      .crop {
-        width: 520px;
-	height: 150px;
-	overflow: hidden;
-      }
-      .crop img {
-        width: 600px;
-	height: 300px;
-	margin: -75px 0 0 -100px;
-      }
-      </style>
       <div class="row marketing">
 	  <div class="col-sm-6 col-md-4">
-	    <div class="thumbnail" style="padding: 0px; border: 0;">
-	      <div class="caption" style="overflow: hidden; white-space: nowrap; text-overflow:ellipsis; font-weight: bold; color: #333; text-align: center;">
+	    <div class="thumbnail">
+	      <div class="caption caption-title">
 		<span>{{ linkshelf.user.get_full_name  }}</span>
 	      </div>
-	      <div class="caption" style="height: 92px;">
+	      <div class="caption caption-center">
 	      	<img src="http://www.gravatar.com/avatar/1f541f75320ef73301199b11f876f5d2?size=72" alt="..." class="img-circle center-block">
 	      </div>
-	      <div class="caption" style="overflow: hidden; white-space: nowrap; text-overflow:ellipsis;">
-		<p style="overflow: hidden; white-space: nowrap; text-overflow:ellipsis; text-align: center; margin: 0px;">
+	      <div class="caption caption-footer">
+		<p class="profile-para">
 		<small>
 		Links published on {{ linkshelf }}
 		<br/>
@@ -35,22 +23,22 @@
 	  </div>
 	  {% for link in linkshelf.link_set.all %}
 	  <div class="col-sm-6 col-md-4">
-	    <div class="thumbnail" style="padding: 0px;">
-	      <div class="caption" style="overflow: hidden; white-space: nowrap; text-overflow:ellipsis; font-weight: bold; color: #333;">
+	    <div class="thumbnail">
+	      <div class="caption caption-title">
 		<span class="glyphicon glyphicon-bookmark"></span> <span>{{ link.title|default:link.simple_url  }}</span>
 	      </div>
-	      <a href="{{ link.url }}" style="text-decoration: none;" target="_blank">
-	      <div class="caption" style="height: 92px; padding: 9px 0px; background-color: {{ colors|random }}; {% if link.image %}background-image: url('{{ link.image.url }}'); background-size: 100% auto; background-position: center; {% endif %}background-repeat: no-repeat;">
+	      <a href="{{ link.url }}" target="_blank">
+	      <div class="caption caption-center" style="background-color: {{ colors|random }}; {% if link.image %}background-image: url('{{ link.image.url }}'); background-size: 100% auto; background-position: center; background-repeat: no-repeat;{% endif %}">
 	        {% if not link.image %}
-		<h4 style="padding: 10px; color: #fff; text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6); text-align: center;">{{ link.domain }}</h4>
+		<h4>{{ link.domain }}</h4>
 		{% endif %}
 	      </div>
 	      </a>
-	      <div class="caption" style="overflow: hidden; white-space: nowrap; text-overflow:ellipsis;">
-		<p style="overflow: hidden; white-space: nowrap; text-overflow:ellipsis; margin: 0px;">
-		<span class="glyphicon glyphicon-link"></span> <small><a href="{{ link.url }}" target="_blank">{{ link.simple_url }}</a></small>
-		<br/>
-		<span class="glyphicon glyphicon-time"></span> <small>{{ link.created_at |timesince }}</small>
+	      <div class="caption caption-footer">
+		<p>
+			<span class="glyphicon glyphicon-link"></span> <small><a href="{{ link.url }}" target="_blank">{{ link.simple_url }}</a></small>
+			<br/>
+			<span class="glyphicon glyphicon-time"></span> <small>{{ link.created_at |timesince }}</small>
 		</p>
 	      </div>
 	    </div>
