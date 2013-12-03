@@ -99,6 +99,8 @@ TEMPLATE_DIRS = [os.path.join(BASE_DIR, 'bokmarken', 'templates')]
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
+LOGIN_URL = '/'
+
 # Path to redirect to on successful login.
 LOGIN_REDIRECT_URL = '/'
 
