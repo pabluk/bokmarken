@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load staticfiles %}
+{% load link_extras %}
 {% block content %}
       <div class="row marketing">
 	  <div class="col-sm-6 col-md-4">
@@ -8,7 +9,7 @@
 		<span>{{ linkshelf.user.get_full_name  }}</span>
 	      </div>
 	      <div class="caption caption-center">
-	      	<img src="http://www.gravatar.com/avatar/1f541f75320ef73301199b11f876f5d2?size=72" alt="..." class="img-circle center-block">
+	        <img src="{{ linkshelf.user.email | gravatar_url }}" alt="Gravatar" class="img-circle center-block">
 	      </div>
 	      <div class="caption caption-footer">
 		<p class="profile-para">
