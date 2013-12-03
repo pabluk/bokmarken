@@ -12,7 +12,7 @@ from PIL import Image
 
 
 class Linkshelf(models.Model):
-    name = models.CharField(max_length=100)
+    name = models.CharField(max_length=100, unique=True)
     user = models.ForeignKey(User)
     created_at = models.DateTimeField('created at', auto_now_add=True)
     is_public = models.BooleanField(default=False)

@@ -1,15 +1,15 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 
 from links.models import Linkshelf
 from links.forms import LinkForm
 
 
-def index(request):
-    linkshelf = Linkshelf.objects.latest('id')
+def linkshelf(request, name):
+    linkshelf = get_object_or_404(Linkshelf, name=name)
     colors = ['#66D596', '#66A7D5', '#FF566A']
     context = {'linkshelf': linkshelf, 'colors': colors}
-    return render(request, 'links/index.html', context)
+    return render(request, 'links/linkshelf.html', context)
 
 
 @login_required

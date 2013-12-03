@@ -5,9 +5,8 @@ from links.models import Link, Linkshelf
 
 class LinkTestCase(TestCase):
     def setUp(self):
-        name = 'test'
         user = User.objects.create_user('test_user', 'test@example.com', 'test_pass')
-        self.linkshelf = Linkshelf.objects.create(name=name, user=user)
+        self.linkshelf = user.linkshelf_set.latest('id')
 
     def test_domain(self):
         url = 'http://www.python.org/about/'
@@ -35,3 +34,9 @@ class LinkTestCase(TestCase):
         self.assertEqual(link.simple_url(), 'example.com:8080/path?q=v#frag')
 
 
+class LinkshelfTestCase(TestCase):
+    def test_linkshelf_creation(self):
+        user_name = 'test_user'
+        user = User.objects.create_user(user_name, '%s@example.com' % user_name, 'test_pass')
+        linkshelf = Linkshelf.objects.get(name=user_name)
+        self.assertEqual(user_name, linkshelf.name)
