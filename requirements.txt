@@ -4,3 +4,4 @@ beautifulsoup4==4.3.2
 requests==2.0.1
 South==0.8.4
 -e git://github.com/mozilla/django-browserid.git@04e4a860e28243248eb76bbab562fcc040c11d7d#egg=django_browserid-dev
+libgravatar==0.2.2
