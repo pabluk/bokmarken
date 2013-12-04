@@ -9,7 +9,7 @@ def index(request):
     if request.user.is_authenticated():
         linkshelf = request.user.linkshelf_set.latest('id')
         return redirect('linkshelf', name=linkshelf.name)
-    links = Link.objects.all().order_by('?')
+    links = Link.objects.filter(linkshelf__is_public=True).order_by('?')
     colors = ['#66D596', '#66A7D5', '#FF566A']
     context = {'links': links, 'colors': colors}
     return render(request, 'links/index.html', context)
