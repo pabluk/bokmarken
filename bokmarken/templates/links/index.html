@@ -3,26 +3,7 @@
 {% load link_extras %}
 {% block content %}
       <div class="row marketing">
-	  <div class="col-sm-6 col-md-4">
-	    <div class="thumbnail">
-	      <div class="caption caption-title">
-		<span>{{ linkshelf.name  }}</span>
-	      </div>
-	      <div class="caption caption-center">
-	        <img src="{{ linkshelf.user.email | gravatar_url }}" alt="Gravatar" class="img-circle center-block">
-	      </div>
-	      <div class="caption caption-footer">
-		<p class="profile-para">
-		<small>
-		Links published on {{ linkshelf }}
-		<br/>
-		{{ linkshelf.created_at }}
-		</small>
-		</p>
-	      </div>
-	    </div>
-	  </div>
-	  {% for link in linkshelf.link_set.all %}
+	  {% for link in links %}
 	  <div class="col-sm-6 col-md-4">
 	    <div class="thumbnail">
 	      <div class="caption caption-title">
