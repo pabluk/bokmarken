@@ -1,14 +1,10 @@
-import os.path
-from StringIO import StringIO
 from urlparse import urlparse
 
 from django.db import models
-from django.core.files import File
 from django.contrib.auth.models import User
 
 import requests
 from bs4 import BeautifulSoup
-from PIL import Image
 
 
 class Linkshelf(models.Model):
@@ -25,7 +21,7 @@ class Link(models.Model):
     url = models.URLField(max_length=1024)
     title = models.CharField(max_length=200, blank=True)
     created_at = models.DateTimeField('created at', auto_now_add=True)
-    image = models.ImageField(upload_to='images', max_length=512, blank=True)
+    image_url = models.URLField(max_length=1024)
     is_update = models.BooleanField(default=False)
     linkshelf = models.ForeignKey(Linkshelf)
 
@@ -63,9 +59,7 @@ class Link(models.Model):
             if response.status_code == 200:
 
                 if 'image/' in response.headers['content-type']:
-                    response = requests.get(self.url)
-                    image = StringIO(response.content)
-                    self.image.save(os.path.basename(self.url), File(image))
+                    self.image_url = self.url
 
                 if 'text/html' in response.headers['content-type']:
                     soup = BeautifulSoup(response.text)
@@ -86,9 +80,7 @@ class Link(models.Model):
                             image_url = meta_tag.get('content')
 
                     if image_url:
-                        response = requests.get(image_url)
-                        image = StringIO(response.content)
-                        self.image.save(os.path.basename(image_url), File(image))
+                        self.image_url = image_url
             self.is_update = True
 
         return self.is_update
