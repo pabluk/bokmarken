@@ -33,6 +33,7 @@
       <div class="header">
         <ul class="nav nav-pills pull-right">
           {% if user.is_authenticated %}
+            <li><a href="{% url 'add' %}">Add</a></li>
             <li>{% browserid_logout text='Logout' %}</li>
           {% else %}
             <li>{% browserid_login text='Login' %}</li>
