@@ -29,8 +29,8 @@
 		<span class="glyphicon glyphicon-bookmark"></span> <span>{{ link.title|default:link.simple_url  }}</span>
 	      </div>
 	      <a href="{{ link.url }}" target="_blank">
-	      <div class="caption caption-center" style="background-color: {{ colors|random }}; {% if link.image %}background-image: url('{{ link.image.url }}'); background-size: 100% auto; background-position: center; background-repeat: no-repeat;{% endif %}">
-	        {% if not link.image %}
+	      <div class="caption caption-center" style="background-color: {{ colors|random }}; {% if link.image_url %}background-image: url('{{ link.image_url }}'); background-size: 100% auto; background-position: center; background-repeat: no-repeat;{% endif %}">
+	        {% if not link.image_url %}
 		<h4>{{ link.domain }}</h4>
 		{% endif %}
 	      </div>
