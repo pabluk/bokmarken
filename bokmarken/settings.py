@@ -26,7 +26,7 @@ TEMPLATE_DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
-BROWSERID_AUDIENCES = ['http://localhost:8000']
+BROWSERID_AUDIENCES = ['http://bokmarken.herokuapp.com', 'http://localhost:8000']
 
 # Application definition
 
