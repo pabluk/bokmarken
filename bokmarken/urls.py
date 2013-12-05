@@ -18,7 +18,4 @@ urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
     url(r'^', include('links.urls')),
     url(r'^api/', include(v1_api.urls)),
-
-    (r'', include('django_browserid.urls')),
-
 ) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

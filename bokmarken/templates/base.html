@@ -1,5 +1,4 @@
 {% load staticfiles %}
-{% load browserid %}
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -18,7 +17,6 @@
 
     <!-- Custom styles for this template -->
     <link href="{% static 'css/bokmarken.css' %}" rel="stylesheet">
-    {% browserid_css %}
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -34,9 +32,9 @@
         <ul class="nav nav-pills pull-right">
           {% if user.is_authenticated %}
             <li><a href="{% url 'add' %}">Add</a></li>
-            <li>{% browserid_logout text='Logout' %}</li>
+            <li><a href="#">Logout</a></li>
           {% else %}
-            <li>{% browserid_login text='Login' %}</li>
+            <li><a href="#">Login</a></li>
           {% endif %}
           <li><a href="#">About</a></li>
         </ul>
@@ -53,6 +51,5 @@
 
     <script src="{% static 'js/jquery.min.js' %}"></script>
     <script src="{% static 'js/bootstrap.min.js' %}"></script>
-    {% browserid_js %}
   </body>
 </html>

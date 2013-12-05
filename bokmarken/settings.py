@@ -26,14 +26,11 @@ TEMPLATE_DEBUG = DEBUG
 
 ALLOWED_HOSTS = ['*']
 
-BROWSERID_AUDIENCES = ['http://bokmarken.herokuapp.com', 'http://localhost:8000']
-
 # Application definition
 
 INSTALLED_APPS = (
     'django.contrib.admin',
     'django.contrib.auth',
-    'django_browserid',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
@@ -41,20 +38,6 @@ INSTALLED_APPS = (
     'links',
     'south',
     'tastypie',
-)
-
-MIDDLEWARE_CLASSES = (
-    'django.contrib.sessions.middleware.SessionMiddleware',
-    'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
-    'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django.contrib.messages.middleware.MessageMiddleware',
-    'django.middleware.clickjacking.XFrameOptionsMiddleware',
-)
-
-AUTHENTICATION_BACKENDS = (
-   'django.contrib.auth.backends.ModelBackend', # required for admin
-   'django_browserid.auth.BrowserIDBackend',
 )
 
 ROOT_URLCONF = 'bokmarken.urls'
@@ -101,17 +84,6 @@ TEMPLATE_DIRS = [os.path.join(BASE_DIR, 'bokmarken', 'templates')]
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
-
-LOGIN_URL = '/'
-
-# Path to redirect to on successful login.
-LOGIN_REDIRECT_URL = '/'
-
-# Path to redirect to on unsuccessful login attempt.
-LOGIN_REDIRECT_URL_FAILURE = '/'
-
-# Path to redirect to on logout.
-LOGOUT_REDIRECT_URL = '/'
 
 # Parse database configuration from $DATABASE_URL
 import dj_database_url
