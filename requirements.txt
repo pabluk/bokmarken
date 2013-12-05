@@ -5,11 +5,14 @@ beautifulsoup4==4.3.2
 dj-database-url==0.2.2
 dj-static==0.0.5
 -e git://github.com/mozilla/django-browserid.git@04e4a860e28243248eb76bbab562fcc040c11d7d#egg=django_browserid-dev
+django-tastypie==0.11.0
 django-toolbelt==0.0.1
 fancy-tag==0.2.0
 gunicorn==18.0
 libgravatar==0.2.2
 psycopg2==2.5.1
+python-dateutil==2.2
+python-mimeparse==0.1.4
 requests==2.0.1
 six==1.4.1
 static==0.4
