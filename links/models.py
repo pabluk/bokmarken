@@ -21,7 +21,7 @@ class Link(models.Model):
     url = models.URLField(max_length=1024)
     title = models.CharField(max_length=200, blank=True)
     created_at = models.DateTimeField('created at', auto_now_add=True)
-    image_url = models.URLField(max_length=1024)
+    image_url = models.URLField(max_length=1024, blank=True)
     is_update = models.BooleanField(default=False)
     linkshelf = models.ForeignKey(Linkshelf)
 
