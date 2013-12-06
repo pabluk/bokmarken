@@ -93,3 +93,8 @@ LOGIN_REDIRECT_URL = '/'
 ACCOUNT_ACTIVATION_DAYS = 7
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+try:
+    from local_settings import *
+except ImportError, e:
+    print('Unable to load local_settings.py: %s' % e)
