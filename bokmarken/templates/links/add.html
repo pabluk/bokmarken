@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% load staticfiles %}
 {% block content %}
-      <div class="row marketing">
+    <div class="jumbotron">
 	<form role="form" method="post">{% csrf_token %}
 	  <div class="form-group {% if form.errors %}has-error{% endif %}">
 	    <label class="sr-only" for="id_url">Link</label>
@@ -9,5 +9,5 @@
 	  </div>
 	  <button type="submit" class="btn btn-primary center-block"><span class="glyphicon glyphicon-bookmark"></span> Add</button>
 	</form>
-      </div>
+    </div>
 {% endblock %}
