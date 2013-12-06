@@ -23,8 +23,8 @@ def public(request, username):
     links = Link.objects.filter(user=user, is_public=True).order_by('-id')
 
     colors = ['#66D596', '#66A7D5', '#FF566A']
-    context = {'links': links, 'colors': colors}
-    return render(request, 'links/links.html', context)
+    context = {'user': user, 'links': links, 'colors': colors}
+    return render(request, 'links/public.html', context)
 
 
 @login_required

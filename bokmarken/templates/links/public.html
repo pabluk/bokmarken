@@ -14,9 +14,9 @@
 	      <div class="caption caption-footer">
 		<p class="profile-para">
 		<small>
-		Links published on {{ user.username }}
+		{{ links|length }} links
 		<br/>
-		{{ user }}
+		Last update {{ links.0.created_at }}
 		</small>
 		</p>
 	      </div>
