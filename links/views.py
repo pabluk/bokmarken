@@ -7,31 +7,35 @@ from links.forms import LinkForm
 
 
 def index(request):
+    links = Link.objects.all()
     if request.user.is_authenticated():
-        return redirect('links', username=request.user.username)
-    links = Link.objects.filter(is_public=True).order_by('?')
+        links = links.filter(user=request.user).order_by('-id')
+    else:
+        links = links.filter(is_public=True).order_by('?')
     colors = ['#66D596', '#66A7D5', '#FF566A']
+
     context = {'links': links, 'colors': colors}
     return render(request, 'links/index.html', context)
 
 
-def links(request, username):
+def public(request, username):
     user = get_object_or_404(User, username=username)
-    links = Link.objects.filter(user=user)
+    links = Link.objects.filter(user=user, is_public=True).order_by('-id')
+
     colors = ['#66D596', '#66A7D5', '#FF566A']
     context = {'links': links, 'colors': colors}
     return render(request, 'links/links.html', context)
 
 
 @login_required
-def add(request, username=''):
+def add(request):
     if request.method == 'POST':
         form = LinkForm(request.POST)
         if form.is_valid():
             link = form.save(commit=False)
             link.user = request.user
             link.save()
-            return redirect('links', username=request.user.username)
+            return redirect('index')
     else:
         form = LinkForm()
 
