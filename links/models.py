@@ -7,23 +7,14 @@ import requests
 from bs4 import BeautifulSoup
 
 
-class Linkshelf(models.Model):
-    name = models.CharField(max_length=100, unique=True)
-    user = models.ForeignKey(User)
-    created_at = models.DateTimeField('created at', auto_now_add=True)
-    is_public = models.BooleanField(default=False)
-
-    def __unicode__(self):
-        return self.name
-
-
 class Link(models.Model):
     url = models.URLField(max_length=1024)
     title = models.CharField(max_length=200, blank=True)
     created_at = models.DateTimeField('created at', auto_now_add=True)
     image_url = models.URLField(max_length=1024, blank=True)
     is_update = models.BooleanField(default=False)
-    linkshelf = models.ForeignKey(Linkshelf)
+    user = models.ForeignKey(User)
+    is_public = models.BooleanField(default=False)
 
     class Meta:
         ordering = ['-created_at']
@@ -63,7 +54,7 @@ class Link(models.Model):
 
                 if 'text/html' in response.headers['content-type']:
                     soup = BeautifulSoup(response.text)
-                    self.title = soup.title.string.encode('utf-8')
+                    self.title = soup.title.string.encode('utf-8').strip()
 
                     image_url = None
 

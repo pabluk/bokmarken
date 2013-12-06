@@ -1,6 +1,5 @@
 from django.contrib import admin
-from links.models import Linkshelf, Link
+from links.models import Link
 
 
 admin.site.register(Link)
-admin.site.register(Linkshelf)

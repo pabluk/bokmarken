@@ -1,37 +1,37 @@
 from django.shortcuts import render, redirect, get_object_or_404
+from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 
-from links.models import Linkshelf, Link
+from links.models import Link
 from links.forms import LinkForm
 
 
 def index(request):
     if request.user.is_authenticated():
-        linkshelf = request.user.linkshelf_set.latest('id')
-        return redirect('linkshelf', name=linkshelf.name)
-    links = Link.objects.filter(linkshelf__is_public=True).order_by('?')
+        return redirect('links', username=request.user.username)
+    links = Link.objects.filter(is_public=True).order_by('?')
     colors = ['#66D596', '#66A7D5', '#FF566A']
     context = {'links': links, 'colors': colors}
     return render(request, 'links/index.html', context)
 
 
-def linkshelf(request, name):
-    linkshelf = get_object_or_404(Linkshelf, name=name)
+def links(request, username):
+    user = get_object_or_404(User, username=username)
+    links = Link.objects.filter(user=user)
     colors = ['#66D596', '#66A7D5', '#FF566A']
-    context = {'linkshelf': linkshelf, 'colors': colors}
-    return render(request, 'links/linkshelf.html', context)
+    context = {'links': links, 'colors': colors}
+    return render(request, 'links/links.html', context)
 
 
 @login_required
-def add(request):
-    linkshelf = request.user.linkshelf_set.latest('id')
+def add(request, username=''):
     if request.method == 'POST':
         form = LinkForm(request.POST)
         if form.is_valid():
             link = form.save(commit=False)
-            link.linkshelf = linkshelf
+            link.user = request.user
             link.save()
-            return redirect('linkshelf', name=linkshelf.name)
+            return redirect('links', username=request.user.username)
     else:
         form = LinkForm()
 

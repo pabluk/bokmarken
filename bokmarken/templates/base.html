@@ -31,10 +31,10 @@
       <div class="header">
         <ul class="nav nav-pills pull-right">
           {% if user.is_authenticated %}
-            <li><a href="{% url 'add' %}">Add</a></li>
-            <li><a href="#">Logout</a></li>
+            <li><a href="{% url 'add' user.username %}">Add</a></li>
+            <li><a href="{% url 'auth_logout' %}">Logout</a></li>
           {% else %}
-            <li><a href="#">Login</a></li>
+            <li><a href="{% url 'auth_login' %}">Login</a></li>
           {% endif %}
           <li><a href="#">About</a></li>
         </ul>
