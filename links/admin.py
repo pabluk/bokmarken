@@ -19,7 +19,7 @@ public_off.short_description = "Mark selected links as private"
 
 class LinkAdmin(admin.ModelAdmin):
     list_display = ('id', 'user', 'title', 'url', 'created_at', 'is_update', 'is_public')
-    list_filter = ['created_at']
+    list_filter = ['created_at', 'user']
     search_fields = ['title', 'url']
     actions = [unset_update, public_on, public_off]
 
