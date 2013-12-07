@@ -6,7 +6,7 @@
 	  <div class="col-sm-6 col-md-4">
 	    <div class="thumbnail">
 	      <div class="caption caption-title">
-		<span>{{ user.username  }}</span>
+		<span>{{ user.username|upper }}</span>
 	      </div>
 	      <div class="caption caption-center">
 	        <img src="{{ user.email | gravatar_url }}" alt="Gravatar" class="img-circle center-block">
