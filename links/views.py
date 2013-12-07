@@ -1,9 +1,9 @@
-from django.shortcuts import render, redirect, get_object_or_404
+from django.shortcuts import render, get_object_or_404
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
+from django.views.decorators.csrf import ensure_csrf_cookie
 
 from links.models import Link
-from links.forms import LinkForm
 
 
 def index(request):
@@ -28,16 +28,6 @@ def public(request, username):
 
 
 @login_required
+@ensure_csrf_cookie
 def add(request):
-    if request.method == 'POST':
-        form = LinkForm(request.POST)
-        if form.is_valid():
-            link = form.save(commit=False)
-            link.user = request.user
-            link.save()
-            return redirect('index')
-    else:
-        form = LinkForm()
-
-    context = {'form': form}
-    return render(request, 'links/add.html', context)
+    return render(request, 'links/add.html')

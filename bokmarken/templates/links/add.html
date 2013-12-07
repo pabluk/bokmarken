@@ -2,12 +2,20 @@
 {% load staticfiles %}
 {% block content %}
     <div class="jumbotron">
-	<form role="form" method="post">{% csrf_token %}
-	  <div class="form-group {% if form.errors %}has-error{% endif %}">
+	  <div id="id_url_group" class="form-group">
 	    <label class="sr-only" for="id_url">Link</label>
 	    <input name="url" type="url" class="form-control" id="id_url" placeholder="Enter link" maxlength="1024">
 	  </div>
-	  <button type="submit" class="btn btn-primary center-block"><span class="glyphicon glyphicon-bookmark"></span> Add</button>
-	</form>
+	  <button id="id_submit" type="submit" class="btn btn-primary center-block" data-loading-text="Processing..."><span class="glyphicon glyphicon-bookmark"></span> Add</button>
     </div>
+{% endblock %}
+{% block js_footer %}
+  <script src="{% static 'js/jquery.cookie.js' %}"></script>
+  <script src="{% static 'js/bokmarken.js' %}"></script>
+  <script>
+  $(document).ready(function() {$('#id_url').focus()});
+  $("#id_submit").click(function() {
+      add_link('#id_url', '#id_submit', '#id_url_group');
+  });
+  </script>
 {% endblock %}

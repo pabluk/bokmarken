@@ -1,7 +1,6 @@
-from tastypie import fields
 from tastypie.resources import ModelResource
 from tastypie.authorization import Authorization
-from tastypie.authentication import ApiKeyAuthentication
+from tastypie.authentication import ApiKeyAuthentication, SessionAuthentication, MultiAuthentication
 
 from links.models import Link
 
@@ -10,10 +9,9 @@ class LinkResource(ModelResource):
     class Meta:
         queryset = Link.objects.all()
         resource_name = 'link'
-        #excludes = ['is_updated', 'is_public']
         fields = ['url']
         allow_methods = ['get', 'post']
-        authentication = ApiKeyAuthentication()
+        authentication = MultiAuthentication(SessionAuthentication(), ApiKeyAuthentication())
         authorization = Authorization()
 
     def obj_create(self, bundle, **kwargs):
