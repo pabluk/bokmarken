@@ -19,11 +19,11 @@ def index(request):
 
 
 def public(request, username):
-    user = get_object_or_404(User, username=username)
-    links = Link.objects.filter(user=user, is_public=True).order_by('-id')
+    public_user = get_object_or_404(User, username=username)
+    links = Link.objects.filter(user=public_user, is_public=True).order_by('-id')
 
     colors = ['#66D596', '#66A7D5', '#FF566A']
-    context = {'user': user, 'links': links, 'colors': colors}
+    context = {'public_user': public_user, 'links': links, 'colors': colors}
     return render(request, 'links/public.html', context)
 
 
