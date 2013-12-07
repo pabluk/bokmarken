@@ -17,7 +17,7 @@ class Link(models.Model):
     is_public = models.BooleanField(default=False)
 
     class Meta:
-        ordering = ['-created_at']
+        ordering = ['-id']
 
     def __unicode__(self):
         return self.url

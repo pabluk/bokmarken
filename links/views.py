@@ -9,9 +9,9 @@ from links.models import Link
 def index(request):
     links = Link.objects.all()
     if request.user.is_authenticated():
-        links = links.filter(user=request.user).order_by('-id')
+        links = links.filter(user=request.user)
     else:
-        links = links.filter(is_public=True).order_by('?')
+        links = links.filter(is_public=True)
     colors = ['#66D596', '#66A7D5', '#FF566A']
 
     context = {'links': links, 'colors': colors}
@@ -20,7 +20,7 @@ def index(request):
 
 def public(request, username):
     public_user = get_object_or_404(User, username=username)
-    links = Link.objects.filter(user=public_user, is_public=True).order_by('-id')
+    links = Link.objects.filter(user=public_user, is_public=True)
 
     colors = ['#66D596', '#66A7D5', '#FF566A']
     context = {'public_user': public_user, 'links': links, 'colors': colors}
