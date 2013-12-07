@@ -15,11 +15,11 @@ body {
 }
 
 .jumbotron {
+  color: #666;
   background-color: #f8f8f8;
 }
 
 .jumbotron label {
-  color: #666;
   font-size: 14px;
 }
 
