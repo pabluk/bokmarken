@@ -22,6 +22,10 @@ class Link(models.Model):
     def __unicode__(self):
         return self.url
 
+    def save(self, *args, **kwargs):
+        self.update()
+        super(Link, self).save(*args, **kwargs)
+
     def domain(self):
         """Extract and return the domain name from url."""
         parsed = urlparse(self.url)
