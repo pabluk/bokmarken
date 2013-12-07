@@ -18,13 +18,16 @@
 	      </a>
 	      <div class="caption caption-footer">
 		<p>
-			<span class="glyphicon glyphicon-link"></span> <small><a href="{{ link.url }}" target="_blank">{{ link.simple_url }}</a></small>
-			<br/>
-			<span class="glyphicon glyphicon-time"></span> <small>{{ link.created_at |timesince }}</small>
+		  <span class="glyphicon glyphicon-link"></span> <small><a href="{{ link.url }}" target="_blank">{{ link.simple_url }}</a></small>
+		  <br/>
+		  <span title="{{ link.created_at }}" class="glyphicon glyphicon-time"></span> <small>{{ link.created_at |timesince }}</small>
 		</p>
 	      </div>
 	    </div>
 	  </div>
 	  {% endfor %}
       </div>
+{% endblock %}
+{% block js_footer %}
+  <script>$('.glyphicon-time').tooltip();</script>
 {% endblock %}
