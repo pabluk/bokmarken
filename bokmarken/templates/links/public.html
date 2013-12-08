@@ -8,7 +8,7 @@
 	      <div class="caption caption-title">
 		<span>{{ public_user.username|upper }}</span>
 	      </div>
-	      <div class="caption caption-center">
+	      <div class="caption caption-center" style="background-image: none; background-color: #fff;">
 	        <img src="{{ public_user.email | gravatar_url }}" alt="Gravatar" class="img-circle center-block">
 	      </div>
 	      <div class="caption caption-footer">
@@ -29,7 +29,7 @@
 		<span class="glyphicon glyphicon-bookmark"></span> <span>{{ link.title|default:link.simple_url  }}</span>
 	      </div>
 	      <a href="{{ link.url }}" target="_blank">
-	      <div class="caption caption-center" style="background-color: {{ colors|random }}; {% if link.image_url %}background-image: url('{{ link.image_url }}'); background-size: 100% auto; background-position: center; background-repeat: no-repeat;{% endif %}">
+	      <div class="caption caption-center" style="{% if link.image_url %}background-image: url('{{ link.image_url }}');{% endif %}">
 	        {% if not link.image_url %}
 		<h4>{{ link.domain }}</h4>
 		{% endif %}

@@ -12,18 +12,14 @@ def index(request):
         links = links.filter(user=request.user)
     else:
         links = links.filter(is_public=True)
-    colors = ['#66D596', '#66A7D5', '#FF566A']
-
-    context = {'links': links, 'colors': colors}
+    context = {'links': links}
     return render(request, 'links/index.html', context)
 
 
 def public(request, username):
     public_user = get_object_or_404(User, username=username)
     links = Link.objects.filter(user=public_user, is_public=True)
-
-    colors = ['#66D596', '#66A7D5', '#FF566A']
-    context = {'public_user': public_user, 'links': links, 'colors': colors}
+    context = {'public_user': public_user, 'links': links}
     return render(request, 'links/public.html', context)
 
 
