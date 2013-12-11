@@ -43,7 +43,7 @@
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
             <li class="{% ifactive "/" %}active{% endifactive %}"><a href="{% url 'index' %}">Home</a></li>
-            <li class="{% ifstartswith "/accounts/register/" %}active{% endifstartswith %}"><a href="{% url 'registration_register' %}">Sign in</a></li>
+            <li class="{% ifstartswith "/accounts/register/" %}active{% endifstartswith %}"><a href="{% url 'registration_register' %}">Sign up</a></li>
             <li class="{% ifactive "/api/" %}active{% endifactive %}"><a href="{% url 'api' %}">API</a></li>
             <li class="{% ifactive "/about/" %}active{% endifactive %}"><a href="{% url 'about' %}">About</a></li>
           </ul>

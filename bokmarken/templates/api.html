@@ -1,8 +1,13 @@
 {% extends "base.html" %}
 {% block content %}
-    <div class="jumbotron">
-        <h3>API docs</h3>
-        <h3>Usage</h3>
+    <div class="well well-flat">
+        <div class="page-header">
+            <h1>API docs</h1>
+        </div>
+	<h3>Usage</h3>
         <p>You need your API key.<p>
+	<h3>Examples</h3>
+        <p>Using curl:<p>
+	<pre>$ curl http://bokmarken.com/api/v1/link/</pre>
     </div>
 {% endblock %}

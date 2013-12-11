@@ -1,7 +1,9 @@
 {% extends "base.html" %}
 {% block content %}
-  <div class="jumbotron">
-    <h3>Activation completed successfully!</h3>
-    <p>You can <a href="{% url 'auth_login' %}">sign in</a> to your Bokmärken account.</p>
-  </div>
+    <div class="well well-flat">
+        <div class="page-header">
+            <h1>Activation completed successfully!</h1>
+        </div>
+        <p>You can <a href="{% url 'auth_login' %}">sign in</a> to your Bokmärken account.</p>
+    </div>
 {% endblock %}
