@@ -57,3 +57,28 @@ class LinkResourceTest(ResourceTestCase):
     def test_link_list_unauthenticated(self):
         r = self.api_client.get(self.api_link_url, format='json')
         self.assertHttpUnauthorized(r)
+
+    def test_link_add(self):
+        url = 'http://www.google.com/'
+        self.assertEqual(Link.objects.filter(url=url).count(), 0)
+
+        post_data = {
+            'url': url,
+        }
+        r = self.api_client.post(self.api_link_url, format='json', data=post_data, authentication=self.get_credentials())
+        self.assertHttpCreated(r)
+        self.assertEqual(Link.objects.filter(url=url).count(), 1)
+
+    def test_link_add_default_update(self):
+        url = 'http://www.google.com/'
+        self.assertEqual(Link.objects.filter(url=url).count(), 0)
+
+        post_data = {
+            'url': url,
+        }
+        r = self.api_client.post(self.api_link_url, format='json', data=post_data, authentication=self.get_credentials())
+        self.assertHttpCreated(r)
+        self.assertEqual(Link.objects.filter(url=url).count(), 1)
+
+        link = Link.objects.get(url=url)
+        self.assertTrue(link.is_update)
