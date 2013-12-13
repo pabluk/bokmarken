@@ -50,32 +50,36 @@ class Link(models.Model):
 
     def update(self):
         if not self.is_update:
-            response = requests.get(self.url)
-            if response.status_code == 200:
+            try:
+                response = requests.get(self.url)
+                if response.status_code == 200:
 
-                if 'image/' in response.headers['content-type']:
-                    self.image_url = self.url
+                    if 'image/' in response.headers['content-type']:
+                        self.image_url = self.url
 
-                if 'text/html' in response.headers['content-type']:
-                    soup = BeautifulSoup(response.text)
-                    self.title = soup.title.string.encode('utf-8').strip()
+                    if 'text/html' in response.headers['content-type']:
+                        soup = BeautifulSoup(response.text)
+                        self.title = soup.title.string.encode('utf-8').strip()
 
-                    image_url = None
+                        image_url = None
 
-                    if not image_url:
-                        meta_tag = soup.find('meta', {'name': 'twitter:image'})
-                        if meta_tag and meta_tag.has_attr('content'):
-                            image_url = meta_tag.get('content')
-                        if meta_tag and meta_tag.has_attr('value'):
-                            image_url = meta_tag.get('value')
+                        if not image_url:
+                            meta_tag = soup.find('meta', {'name': 'twitter:image'})
+                            if meta_tag and meta_tag.has_attr('content'):
+                                image_url = meta_tag.get('content')
+                            if meta_tag and meta_tag.has_attr('value'):
+                                image_url = meta_tag.get('value')
 
-                    if not image_url:
-                        meta_tag = soup.find('meta', {'property': 'og:image'})
-                        if meta_tag and meta_tag.has_attr('content'):
-                            image_url = meta_tag.get('content')
+                        if not image_url:
+                            meta_tag = soup.find('meta', {'property': 'og:image'})
+                            if meta_tag and meta_tag.has_attr('content'):
+                                image_url = meta_tag.get('content')
 
-                    if image_url:
-                        self.image_url = image_url
+                        if image_url:
+                            self.image_url = image_url
+            except requests.exceptions.RequestException:
+                # Ignore error on requests
+                pass
             self.is_update = True
 
         return self.is_update
