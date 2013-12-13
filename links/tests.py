@@ -82,3 +82,28 @@ class LinkResourceTest(ResourceTestCase):
 
         link = Link.objects.get(url=url)
         self.assertTrue(link.is_update)
+
+    def test_link_add_default_public(self):
+        url = 'http://www.google.com/'
+        self.assertEqual(Link.objects.filter(url=url).count(), 0)
+
+        post_data = {
+            'url': url,
+        }
+        r = self.api_client.post(self.api_link_url, format='json', data=post_data, authentication=self.get_credentials())
+        self.assertHttpCreated(r)
+        link = Link.objects.get(url=url)
+        self.assertFalse(link.is_public)
+
+    def test_link_add_set_public(self):
+        url = 'http://www.google.com/'
+        self.assertEqual(Link.objects.filter(url=url).count(), 0)
+
+        post_data = {
+            'url': url,
+            'is_public': True,
+        }
+        r = self.api_client.post(self.api_link_url, format='json', data=post_data, authentication=self.get_credentials())
+        self.assertHttpCreated(r)
+        link = Link.objects.get(url=url)
+        self.assertTrue(link.is_public)
