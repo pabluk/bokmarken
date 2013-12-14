@@ -7,7 +7,7 @@ Bokmärken is a Swedish word, meaning _Bookmarks_ in English.
 
 Bokmärken was heavily inspired by Minne, a linkshelf project of [socketubs](https://github.com/socketubs).
 
-You can see it in action at http://bokmarken.com/
+You can see it in action at [bokmarken.com](http://bokmarken.com/)
 
 Screenshots
 -----------
@@ -16,7 +16,7 @@ A responsive design for every device.
 
 [![Desktop screenshot](http://bokmarken.com/static/screenshots/desktop-lo-res.jpg)](http://bokmarken.com/static/screenshots/desktop-hi-res.png)
 
-[![Mobile screenshot](http://bokmarken.com/static/screenshots/mobile-lo-res.jpg)](http://bokmarken.com/static/screenshots/mobile-hi-res.png)
+[![Mobile screenshot](http://bokmarken.com/static/screenshots/mobile-thumbnail.jpg)](http://bokmarken.com/static/screenshots/mobile-hi-res.png)
 
 
 Installation
@@ -42,5 +42,6 @@ Open your browser at `http://localhost:8000/`.
 Contributing
 ------------
 
-Want to contribute? Great! Bug reports and code and documentation patches are greatly appreciated.
+Want to contribute? Great! Bug reports, code and documentation patches are greatly appreciated.
+
 Please file bugs and send pull requests using the [issue tracker](https://github.com/pabluk/bokmarken/issues).
