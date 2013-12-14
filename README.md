@@ -14,9 +14,9 @@ Screenshots
 
 A responsive design for every device.
 
-![Desktop screenshot](http://bokmarken.com/static/screenshots/desktop-lo-res.jpg)
+[![Desktop screenshot](http://bokmarken.com/static/screenshots/desktop-lo-res.jpg)](http://bokmarken.com/static/screenshots/desktop-hi-res.png)
 
-![Mobile screenshot](http://bokmarken.com/static/screenshots/mobile-lo-res.jpg)
+[![Mobile screenshot](http://bokmarken.com/static/screenshots/mobile-lo-res.jpg)](http://bokmarken.com/static/screenshots/mobile-hi-res.png)
 
 
 Installation
