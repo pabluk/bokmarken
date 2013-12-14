@@ -1,7 +1,8 @@
 from tastypie.resources import ModelResource
 from tastypie.validation import FormValidation
 from tastypie.authorization import Authorization
-from tastypie.authentication import ApiKeyAuthentication, SessionAuthentication, MultiAuthentication
+from tastypie.authentication import MultiAuthentication
+from tastypie.authentication import ApiKeyAuthentication, SessionAuthentication
 
 from links.models import Link
 from links.forms import LinkForm
@@ -11,7 +12,7 @@ class LinkResource(ModelResource):
     class Meta:
         queryset = Link.objects.all()
         resource_name = 'link'
-        fields = ['url', 'is_public']
+        fields = ['url', 'is_public', 'auto_update']
         allow_methods = ['get', 'post']
         authentication = MultiAuthentication(SessionAuthentication(), ApiKeyAuthentication())
         authorization = Authorization()

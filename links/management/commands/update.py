@@ -17,9 +17,9 @@ class Command(BaseCommand):
             try:
                 link = Link.objects.get(pk=int(link_id))
             except Link.DoesNotExist:
-                raise CommandError('Link "%s" does not exist' % link_id)
+                raise CommandError('Link object "%s" does not exist' % link_id)
             if not link.is_update:
-                link.update()
+                link.auto_update=True
                 link.save()
                 self.stdout.write('Successfully updated link "%s"' % link_id)
         self.stdout.write('Done.')

@@ -3,7 +3,8 @@ from django.conf.urls import patterns, url
 from links import views
 
 
-urlpatterns = patterns('',
+urlpatterns = patterns(
+    '',
     url(r'^$', views.index, name='index'),
     url(r'^add/$', views.add, name='add'),
     url(r'^settings/$', views.settings, name='settings'),

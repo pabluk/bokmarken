@@ -12,9 +12,10 @@ class Link(models.Model):
     title = models.CharField(max_length=200, blank=True)
     created_at = models.DateTimeField('created at', auto_now_add=True)
     image_url = models.URLField(max_length=1024, blank=True)
-    is_update = models.BooleanField(default=False)
+    is_update = models.BooleanField(default=False, help_text=u'Current state media data.')
+    auto_update = models.BooleanField(default=True, help_text=u'Fetch media data on save.')
+    is_public = models.BooleanField(default=False, help_text=u'Visible on the profile page.')
     user = models.ForeignKey(User)
-    is_public = models.BooleanField(default=False)
 
     class Meta:
         ordering = ['-id']
@@ -23,7 +24,8 @@ class Link(models.Model):
         return self.url
 
     def save(self, *args, **kwargs):
-        self.update()
+        if self.auto_update:
+            self.update()
         super(Link, self).save(*args, **kwargs)
 
     def domain(self):

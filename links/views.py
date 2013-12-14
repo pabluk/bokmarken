@@ -28,6 +28,7 @@ def public(request, username):
 def add(request):
     return render(request, 'links/add.html')
 
+
 @login_required
 def settings(request):
     return render(request, 'links/settings.html')

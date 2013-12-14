@@ -6,4 +6,4 @@ from links.models import Link
 class LinkForm(ModelForm):
     class Meta:
         model = Link
-        fields = ['url', 'is_public']
+        fields = ['url', 'is_public', 'auto_update']
