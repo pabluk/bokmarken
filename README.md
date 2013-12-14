@@ -10,6 +10,8 @@ Bokmärken was heavily inspired by Minne, a linkshelf project of [socketubs](htt
 You can see it in action at [bokmarken.com](http://bokmarken.com/).  
 It also includes an API REST to import/export and play with **your** links. For details and examples see [bokmarken.com/api](http://bokmarken.com/api/).
 
+[![Build Status](https://travis-ci.org/pabluk/bokmarken.png?branch=master)](https://travis-ci.org/pabluk/bokmarken)
+
 
 Screenshots
 -----------
