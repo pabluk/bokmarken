@@ -107,5 +107,5 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 try:
     from local_settings import *
-except ImportError, e:
-    print('Unable to load local_settings.py: %s' % e)
+except ImportError:
+    print('Unable to load local_settings.py. Using default settings.')
