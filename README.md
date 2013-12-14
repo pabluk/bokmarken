@@ -26,21 +26,27 @@ A responsive design for every device.
 Installation
 ------------
 
-With `virtualenv`:
+On a Debian or Ubuntu system, you need to install the following packages:
 
 ```bash
-$ cd ~/
-$ git clone https://github.com/pabluk/bokmarken.git
-$ cd bokmarken
-$ virtualenv virtenv
-$ source virtenv/bin/activate
-$ pip install -r requirements.txt
-$ python manage.py syncdb
-$ python manage.py migrate
-$ python manage.py runserver
+sudo apt-get install libxml2-dev libxslt1-dev libpq-dev
 ```
 
-Open your browser at `http://localhost:8000/`.
+and create a `virtualenv`:
+
+```bash
+cd ~/
+git clone https://github.com/pabluk/bokmarken.git
+cd bokmarken
+virtualenv virtenv
+source virtenv/bin/activate
+pip install -r requirements.txt
+python manage.py syncdb --migrate --noinput
+python manage.py createsuperuser --username=admin --email=admin@localhost  # enter a password for the admin user
+python manage.py runserver
+```
+
+Open your browser at `http://localhost:8000/` and sign in with your credentials.
 
 
 Contributing
