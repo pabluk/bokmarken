@@ -6,5 +6,6 @@ from links import views
 urlpatterns = patterns('',
     url(r'^$', views.index, name='index'),
     url(r'^add/$', views.add, name='add'),
+    url(r'^settings/$', views.settings, name='settings'),
     url(r'^(?P<username>\w+)/$', views.public, name='public'),
 )

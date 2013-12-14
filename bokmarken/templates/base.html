@@ -61,8 +61,8 @@
                 <li><a href="{% url 'add' %}">Add link</a></li>
                 <li><a href="{% url 'public' user.username %}">Your public profile</a></li>
                 <li class="divider"></li>
-                <li class="dropdown-header">Settings</li>
-                <li><a href="#">Preferences</a></li>
+                <li class="dropdown-header">Account</li>
+                <li><a href="{% url 'settings' %}">Settings</a></li>
                 <li class="divider"></li>
                 <li><a href="{% url 'auth_logout' %}">Logout</a></li>
               </ul>
