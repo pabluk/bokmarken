@@ -9,7 +9,7 @@
 	<h3>Examples</h3>
         <p>Here some basic examples using curl via command line.<p>
 	<h4>Retrieving all links</h4>
-<pre>$ curl -s "http://bokmarken.com/api/v1/link/?format=json&username=my_user&api_key=nnnn" |json_pp
+<pre>$ curl -s "http://bokmarken.com/api/v1/link/?format=json&username={{ user.username|default:"my_username" }}&api_key={{ user.api_key.key|default:"my_key" }}" |json_pp
 {
    "objects" : [
       {
@@ -37,14 +37,14 @@
    }
 }</pre>
 	<h4>Retrieving one link</h4>
-<pre>$ curl -s "http://bokmarken.com/api/v1/link/12/?format=json&username=my_user&api_key=nnnn" |json_pp
+<pre>$ curl -s "http://bokmarken.com/api/v1/link/12/?format=json&username={{ user.username|default:"my_username" }}&api_key={{ user.api_key.key|default:"my_key" }}" |json_pp
 {
    "resource_uri" : "/api/v1/link/12/",
    "url" : "http://seminar.io/2013/09/27/testing-your-rest-client-in-python/",
    "is_public" : true
 }</pre>
 	<h4>Create a link</h4>
-<pre>$ curl --dump-header - -H "Content-Type: application/json" -X POST --data '{"url": "http://www.python.org/", "is_public": true}' "http://bokmarken.com/api/v1/link/?username=my_user&api_key=nnnn"
+<pre>$ curl --dump-header - -H "Content-Type: application/json" -X POST --data '{"url": "http://www.python.org/", "is_public": true}' "http://bokmarken.com/api/v1/link/?username={{ user.username|default:"my_username" }}&api_key={{ user.api_key.key|default:"my_key" }}"
 HTTP/1.1 201 CREATED
 Date: Sat, 14 Dec 2013 01:02:42 GMT
 Server: Apache/2.2
