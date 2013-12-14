@@ -4,6 +4,7 @@ from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import ensure_csrf_cookie
 
 from links.models import Link
+from links.forms import LinkSearchForm
 
 
 def index(request):
@@ -12,7 +13,15 @@ def index(request):
         links = links.filter(user=request.user)
     else:
         links = links.filter(is_public=True)
-    context = {'links': links}
+
+    query = ''
+    form = LinkSearchForm(request.GET)
+    if form.is_valid():
+        query = form.cleaned_data['q']
+        links = links.filter(url__contains=query)
+    form = LinkSearchForm()
+
+    context = {'links': links, 'form': form, 'query': query}
     return render(request, 'links/index.html', context)
 
 
