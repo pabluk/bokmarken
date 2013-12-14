@@ -57,7 +57,8 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     "django.core.context_processors.static",
     "django.core.context_processors.tz",
     "django.core.context_processors.request",
-    "django.contrib.messages.context_processors.messages"
+    "django.contrib.messages.context_processors.messages",
+    "bokmarken.context_processors.footer_message",
 )
 
 # Database
@@ -104,6 +105,8 @@ LOGIN_REDIRECT_URL = '/'
 ACCOUNT_ACTIVATION_DAYS = 7
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+BOKMARKEN_FOOTER_MESSAGE = u'Powered by <a href="https://github.com/pabluk/bokmarken">Bokm\xe4rken</a>.'
 
 try:
     from local_settings import *
