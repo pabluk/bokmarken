@@ -58,7 +58,7 @@ class Link(models.Model):
                         self.image_url = self.url
 
                     if 'text/html' in response.headers['content-type']:
-                        soup = BeautifulSoup(response.text)
+                        soup = BeautifulSoup(response.text, "lxml")
                         self.title = soup.title.string.encode('utf-8').strip()
 
                         image_url = None
