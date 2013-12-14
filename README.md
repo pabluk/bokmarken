@@ -7,6 +7,7 @@ Bokmärken is a Swedish word, meaning _Bookmarks_ in English.
 
 Bokmärken was heavily inspired by Minne, a linkshelf project of [socketubs](https://github.com/socketubs).
 
+You can see it in action at http://bokmarken.com/
 
 Screenshots
 -----------
@@ -21,7 +22,7 @@ A responsive design for every device.
 Installation
 ------------
 
-This is the right way, with `virtualenv`:
+With `virtualenv`:
 
 ```bash
 $ cd ~/
