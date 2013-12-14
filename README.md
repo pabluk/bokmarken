@@ -7,7 +7,9 @@ Bokmärken is a Swedish word, meaning _Bookmarks_ in English.
 
 Bokmärken was heavily inspired by Minne, a linkshelf project of [socketubs](https://github.com/socketubs).
 
-You can see it in action at [bokmarken.com](http://bokmarken.com/)
+You can see it in action at [bokmarken.com](http://bokmarken.com/).  
+It also includes an API REST to import/export and play with **your** links. For details and examples see [bokmarken.com/api](http://bokmarken.com/api/).
+
 
 Screenshots
 -----------
