@@ -43,5 +43,15 @@
    "url" : "http://seminar.io/2013/09/27/testing-your-rest-client-in-python/",
    "is_public" : true
 }</pre>
+	<h4>Create a link</h4>
+<pre>$ curl --dump-header - -H "Content-Type: application/json" -X POST --data '{"url": "http://www.python.org/", "is_public": true}' "http://bokmarken.com/api/v1/link/?username=my_user&api_key=nnnn"
+HTTP/1.1 201 CREATED
+Date: Sat, 14 Dec 2013 01:02:42 GMT
+Server: Apache/2.2
+Vary: Accept,Accept-Encoding
+Location: http://bokmarken.com/api/v1/link/57/
+Content-Length: 0
+Content-Type: text/html; charset=utf-8
+</pre>
     </div>
 {% endblock %}
