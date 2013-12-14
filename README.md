@@ -16,7 +16,7 @@ A responsive design for every device.
 
 [![Desktop screenshot](http://bokmarken.com/static/screenshots/desktop-lo-res.jpg)](http://bokmarken.com/static/screenshots/desktop-hi-res.png)
 
-[![Mobile screenshot](http://bokmarken.com/static/screenshots/mobile-thumbnail.jpg)](http://bokmarken.com/static/screenshots/mobile-hi-res.png)
+[![Mobile screenshot](http://bokmarken.com/static/screenshots/mobile-lo-res.jpg)](http://bokmarken.com/static/screenshots/mobile-hi-res.png)
 
 
 Installation
@@ -45,3 +45,9 @@ Contributing
 Want to contribute? Great! Bug reports, code and documentation patches are greatly appreciated.
 
 Please file bugs and send pull requests using the [issue tracker](https://github.com/pabluk/bokmarken/issues).
+
+
+License
+-------
+
+Licensed under [AGPL v3](http://www.gnu.org/licenses/agpl-3.0.txt). See [LICENSE](https://raw.github.com/pabluk/bokmarken/master/LICENSE).
