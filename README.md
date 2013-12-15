@@ -69,9 +69,15 @@ about database settings on Django.
 Contributing
 ------------
 
-Want to contribute? Great! Bug reports, code and documentation patches are greatly appreciated.
-
+Want to contribute? Great! Bug reports, code and documentation patches are greatly appreciated.  
 Please file bugs and send pull requests using the [issue tracker](https://github.com/pabluk/bokmarken/issues).
+
+
+Credits
+-------
+
+The image used by default on links without thumbnails is licensed under a Creative Commons license
+by [gpoo](http://www.flickr.com/photos/gpoo/9004993292/).
 
 
 License
