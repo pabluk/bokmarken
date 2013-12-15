@@ -8,7 +8,7 @@ Bokmärken is a Swedish word, meaning _Bookmarks_ in English.
 Bokmärken was heavily inspired by Minne, a linkshelf project of [socketubs](https://github.com/socketubs).
 
 You can see it in action at [bokmarken.com](http://bokmarken.com/).  
-It also includes an API REST to import/export and play with **your** links. For details and examples see [bokmarken.com/api](http://bokmarken.com/api/).
+It also includes an REST API to import/export and play with your links. For details and examples see [bokmarken.com/api](http://bokmarken.com/api/).
 
 [![Build Status](https://travis-ci.org/pabluk/bokmarken.png?branch=master)](https://travis-ci.org/pabluk/bokmarken)
 
@@ -60,4 +60,4 @@ Please file bugs and send pull requests using the [issue tracker](https://github
 License
 -------
 
-Licensed under [AGPL v3](http://www.gnu.org/licenses/agpl-3.0.txt). See [LICENSE](https://raw.github.com/pabluk/bokmarken/master/LICENSE).
+Licensed under [AGPL v3](http://www.gnu.org/licenses/agpl-3.0.txt). See [LICENSE](https://raw.github.com/pabluk/bokmarken/master/LICENSE) for details.
