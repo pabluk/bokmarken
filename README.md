@@ -8,7 +8,7 @@ Bokmärken is a Swedish word, meaning _Bookmarks_ in English.
 Bokmärken was heavily inspired by Minne, a linkshelf project of [socketubs](https://github.com/socketubs).
 
 You can see it in action at [bokmarken.com](http://bokmarken.com/).  
-It also includes an REST API to import/export and play with your links. For details and examples see [bokmarken.com/api](http://bokmarken.com/api/).
+It also includes a REST API to import/export and play with your links. For details and examples see [bokmarken.com/api](http://bokmarken.com/api/).
 
 [![Build Status](https://travis-ci.org/pabluk/bokmarken.png?branch=master)](https://travis-ci.org/pabluk/bokmarken)
 
@@ -29,7 +29,7 @@ Installation
 On a Debian or Ubuntu system, you need to install the following packages:
 
 ```bash
-sudo apt-get install libxml2-dev libxslt1-dev libpq-dev
+sudo apt-get install libxml2-dev libxslt1-dev
 ```
 
 and create a `virtualenv`:
@@ -47,6 +47,23 @@ python manage.py runserver
 ```
 
 Open your browser at `http://localhost:8000/` and sign in with your credentials.
+
+By default links are stored in a SQLite3 database. If you want to use another database backend supported by Django,
+for example PostgreSQL, you need to install additional packages:
+
+```bash
+sudo apt-get install libpq-dev
+```
+
+on the already created and activated `virtualenv`:
+
+```bash
+pip install psycopg2==2.5.1
+```
+
+and finally, add your database settings on `bokmarken/local_settings.py`.
+See this [page](https://docs.djangoproject.com/en/dev/ref/settings/#databases) for more details
+about database settings on Django.
 
 
 Contributing
