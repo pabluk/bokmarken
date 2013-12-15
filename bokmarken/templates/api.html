@@ -6,7 +6,42 @@
         </div>
 	<h3>Credentials</h3>
         <p>To use the API you need your username and an API key. You can find your key on the <a href="{% url 'settings' %}">settings page</a>.<p>
-	<h3>Examples</h3>
+	<h3>Examples using Python</h3>
+        <p>Here some basic examples using Python and the <a href="http://www.python-requests.org/en/latest/">requests</a> library.<p>
+	<h4>Retrieving all links</h4>
+<pre>import requests
+
+API_URL='http://{{ request.META.HTTP_HOST }}{% url 'api_dispatch_list' api_name='v1' resource_name='link' %}'
+
+params = {'username': '{{ user.username|default:"my_username" }}', 'api_key': '{{ user.api_key.key|default:"my_key" }}'}
+headers = {'content-type': 'application/json'}
+r = requests.get(API_URL, params=params, headers=headers)
+print r.json()</pre>
+
+	<h4>Retrieving one link</h4>
+<pre>import requests
+
+API_URL='http://{{ request.META.HTTP_HOST }}{% url 'api_dispatch_detail' api_name='v1' resource_name='link' pk=12 %}'
+
+params = {'username': '{{ user.username|default:"my_username" }}', 'api_key': '{{ user.api_key.key|default:"my_key" }}'}
+headers = {'content-type': 'application/json'}
+r = requests.get(API_URL, params=params, headers=headers)
+print r.json()</pre>
+
+	<h4>Create a link</h4>
+<pre>import json
+import requests
+
+API_URL='http://{{ request.META.HTTP_HOST }}{% url 'api_dispatch_list' api_name='v1' resource_name='link' %}'
+
+params = {'username': '{{ user.username|default:"my_username" }}', 'api_key': '{{ user.api_key.key|default:"my_key" }}'}
+payload = {'url': 'http://www.python.org/'}
+headers = {'content-type': 'application/json'}
+r = requests.post(API_URL, data=json.dumps(payload),
+                  params=params, headers=headers)
+print r.status_code</pre>
+
+	<h3>Examples using cURL</h3>
         <p>Here some basic examples using curl via command line.<p>
 	<h4>Retrieving all links</h4>
 <pre>$ curl -s "http://{{ request.META.HTTP_HOST }}{% url 'api_dispatch_list' api_name='v1' resource_name='link' %}?format=json&username={{ user.username|default:"my_username" }}&api_key={{ user.api_key.key|default:"my_key" }}" |json_pp
@@ -36,6 +71,7 @@
       "offset" : 0
    }
 }</pre>
+
 	<h4>Retrieving one link</h4>
 <pre>$ curl -s "http://{{ request.META.HTTP_HOST }}{% url 'api_dispatch_detail' api_name='v1' resource_name='link' pk=12 %}?format=json&username={{ user.username|default:"my_username" }}&api_key={{ user.api_key.key|default:"my_key" }}" |json_pp
 {
@@ -43,6 +79,7 @@
    "url" : "http://seminar.io/2013/09/27/testing-your-rest-client-in-python/",
    "is_public" : true
 }</pre>
+
 	<h4>Create a link</h4>
 <pre>$ curl --dump-header - -H "Content-Type: application/json" -X POST --data '{"url": "http://www.python.org/", "is_public": true}' "http://{{ request.META.HTTP_HOST }}{% url 'api_dispatch_list' api_name='v1' resource_name='link' %}?username={{ user.username|default:"my_username" }}&api_key={{ user.api_key.key|default:"my_key" }}"
 HTTP/1.1 201 CREATED
