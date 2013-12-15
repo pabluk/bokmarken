@@ -20,7 +20,7 @@ A responsive design for every device.
 
 [![Desktop screenshot](http://bokmarken.com/static/screenshots/desktop-lo-res.jpg)](http://bokmarken.com/static/screenshots/desktop-hi-res.png)
 
-[![Mobile screenshot](http://bokmarken.com/static/screenshots/mobile-lo-res.jpg)](http://bokmarken.com/static/screenshots/mobile-hi-res.png)
+[![Mobile screenshot](http://bokmarken.com/static/screenshots/nexus4-lo-res.jpg)](http://bokmarken.com/static/screenshots/nexus4-hi-res.png)
 
 
 Installation
