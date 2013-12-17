@@ -57,7 +57,7 @@ class LinkResourceTest(ResourceTestCase):
         self.user = User.objects.create_user('test_user', 'test@example.com', 'test_pass')
 
         url = 'http://www.python.org/'
-        self.link_1 = Link.objects.create(url=url, is_update=True, user=self.user)
+        self.link_1 = Link.objects.create(url=url, auto_update=False, user=self.user)
 
         self.api_link_url = '/api/v1/link/'
 
@@ -172,7 +172,7 @@ class LinkResourceTest(ResourceTestCase):
         detail_url = '%s%s/' % (self.api_link_url, alice_link.pk)
         r = self.api_client.delete(detail_url, format='json', authentication=alice_credentials)
         self.assertHttpAccepted(r)
-        # Alice knows and tries to delete bob_link
+        # Alice tries to delete bob_link
         detail_url = '%s%s/' % (self.api_link_url, bob_link.pk)
         r = self.api_client.delete(detail_url, format='json', authentication=alice_credentials)
         self.assertHttpNotFound(r)
