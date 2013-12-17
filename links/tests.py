@@ -145,3 +145,34 @@ class LinkResourceTest(ResourceTestCase):
         self.assertHttpCreated(r)
         link = Link.objects.get(url=url)
         self.assertTrue(link.is_public)
+
+    def test_link_delete(self):
+        url = 'http://www.google.com/'
+        post_data = {'url': url}
+        r = self.api_client.post(self.api_link_url, format='json',
+                                 data=post_data, authentication=self.get_credentials())
+        self.assertEqual(Link.objects.filter(url=url).count(), 1)
+        link = Link.objects.latest('id')
+        detail_url = '%s%s/' % (self.api_link_url, link.pk)
+        r = self.api_client.delete(detail_url, format='json', authentication=self.get_credentials())
+        self.assertHttpAccepted(r)
+        self.assertEqual(Link.objects.filter(url=url).count(), 0)
+
+    def test_link_delete_only_owner(self):
+        """Test that links can only be deleted by its owner."""
+        bob = User.objects.create_user('bob', 'bob@example.com', 'bob_secret')
+        alice = User.objects.create_user('alice', 'alice@example.com', 'alice_secret')
+
+        bob_link = Link.objects.create(url='http://www.python.org/', user=bob)
+        alice_link = Link.objects.create(url='http://www.python.org/', user=alice)
+
+        alice_credentials = self.create_apikey(username=alice.username, api_key=alice.api_key.key)
+
+        # Alice can delete alice_link
+        detail_url = '%s%s/' % (self.api_link_url, alice_link.pk)
+        r = self.api_client.delete(detail_url, format='json', authentication=alice_credentials)
+        self.assertHttpAccepted(r)
+        # Alice knows and tries to delete bob_link
+        detail_url = '%s%s/' % (self.api_link_url, bob_link.pk)
+        r = self.api_client.delete(detail_url, format='json', authentication=alice_credentials)
+        self.assertHttpNotFound(r)
