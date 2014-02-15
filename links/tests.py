@@ -176,3 +176,28 @@ class LinkResourceTest(ResourceTestCase):
         detail_url = '%s%s/' % (self.api_link_url, bob_link.pk)
         r = self.api_client.delete(detail_url, format='json', authentication=alice_credentials)
         self.assertHttpNotFound(r)
+
+    def test_link_update_is_public(self):
+        url = 'http://www.google.com/'
+        self.assertEqual(Link.objects.filter(url=url).count(), 0)
+
+        post_data = {
+            'url': url,
+            'is_public': True,
+        }
+        r = self.api_client.post(self.api_link_url, format='json',
+                                 data=post_data, authentication=self.get_credentials())
+        self.assertHttpCreated(r)
+        link = Link.objects.get(url=url)
+        self.assertTrue(link.is_public)
+
+        post_data = {
+            'is_public': False,
+        }
+        link = Link.objects.latest('id')
+        detail_url = '%s%s/' % (self.api_link_url, link.pk)
+        r = self.api_client.patch(detail_url, format='json',
+                                 data=post_data, authentication=self.get_credentials())
+        self.assertHttpAccepted(r)
+        link = Link.objects.get(url=url)
+        self.assertFalse(link.is_public)
