@@ -10,7 +10,7 @@ from links.forms import LinkSearchForm
 def index(request):
     links = Link.objects.all()
     if request.user.is_authenticated():
-        links = links.filter(user=request.user)
+        links = links.filter(user=request.user, is_archived=False)
     else:
         links = links.filter(is_public=True)
 
@@ -41,3 +41,19 @@ def add(request):
 @login_required
 def settings(request):
     return render(request, 'links/settings.html')
+
+
+@login_required
+def archive(request):
+    print ":::", request.user
+    links = Link.objects.filter(user=request.user, is_archived=True)
+
+    query = ''
+    form = LinkSearchForm(request.GET)
+    if form.is_valid():
+        query = form.cleaned_data['q']
+        links = links.filter(url__contains=query)
+    form = LinkSearchForm()
+
+    context = {'links': links, 'form': form, 'query': query}
+    return render(request, 'links/index.html', context)

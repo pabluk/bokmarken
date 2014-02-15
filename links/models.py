@@ -15,6 +15,7 @@ class Link(models.Model):
     is_update = models.BooleanField(default=False, help_text=u'Current state media data.')
     auto_update = models.BooleanField(default=True, help_text=u'Fetch media data on save.')
     is_public = models.BooleanField(default=False, help_text=u'Visible on the profile page.')
+    is_archived = models.BooleanField(default=False, help_text=u'Archive this link.')
     user = models.ForeignKey(User)
 
     class Meta:

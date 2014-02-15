@@ -12,7 +12,7 @@ class LinkResource(ModelResource):
     class Meta:
         queryset = Link.objects.all()
         resource_name = 'link'
-        fields = ['url', 'is_public', 'auto_update']
+        fields = ['url', 'is_public', 'is_archived', 'auto_update']
         allow_methods = ['get', 'post', 'patch']
         authentication = MultiAuthentication(SessionAuthentication(), ApiKeyAuthentication())
         authorization = Authorization()

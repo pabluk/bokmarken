@@ -21,6 +21,13 @@
 		  <span class="glyphicon glyphicon-link"></span> <small><a href="{{ link.url }}" target="_blank">{{ link.simple_url }}</a></small>
 		  <br/>
 		  {% if user.is_authenticated %}
+		  <a class="toggle-link-archived pull-right" href="#">
+		    {% if link.is_archived %}
+                      <span title="Click to unarchive" class="glyphicon glyphicon-trash link-archived" ></span>
+		    {% else %}
+                      <span title="Click to archive" class="glyphicon glyphicon-trash link-unarchived"></span>
+		    {% endif %}
+		  </a>
 		  <a class="toggle-link-public pull-right" href="#">
 		    {% if link.is_public %}
                       <span title="Click to make private" class="glyphicon glyphicon-eye-open"></span>
@@ -46,6 +53,11 @@
   $(".toggle-link-public").click(function(event) {
       states = {on: 'glyphicon-eye-open', off: 'glyphicon-eye-close'}
       doc.trigger('toggleLinkPublic', [$(this), states]);
+      event.preventDefault();
+  });
+  $(".toggle-link-archived").click(function(event) {
+      states = {on: 'link-archived', off: 'link-unarchived'}
+      doc.trigger('toggleLinkArchived', [$(this), states]);
       event.preventDefault();
   });
   </script>

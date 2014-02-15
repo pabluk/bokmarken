@@ -6,7 +6,7 @@ from links.models import Link
 class LinkForm(forms.ModelForm):
     class Meta:
         model = Link
-        fields = ['url', 'is_public', 'auto_update']
+        fields = ['url', 'is_public', 'is_archived', 'auto_update']
 
 
 class LinkSearchForm(forms.Form):
