@@ -37,3 +37,21 @@
 	  url_group.addClass('has-error');
 	})
   }
+
+$(document).on('toggleLinkPublic', function(event, btnElement, states) {
+    card = btnElement.parents("div[id|='card-link']");
+    link_id = card.attr("id").replace("card-link-", "");
+    button = $('> span', btnElement);
+    is_public = button.hasClass(states.on);
+	var jqxhr = $.ajax({
+        type: "PATCH",
+        url: "/api/v1/link/" + link_id + "/",
+        contentType: 'application/json',
+            data: JSON.stringify({"is_public": !is_public}),
+    })
+    if (is_public) {
+        button.removeClass(states.on).addClass(states.off);
+    } else {
+        button.removeClass(states.off).addClass(states.on);
+    }
+})

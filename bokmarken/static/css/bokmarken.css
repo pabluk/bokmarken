@@ -82,4 +82,6 @@ body {
   text-align: center;
 }
 
-
+.toggle-link-public {
+  color: #333;
+}

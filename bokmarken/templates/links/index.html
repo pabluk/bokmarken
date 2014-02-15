@@ -4,7 +4,7 @@
 {% block content %}
       <div class="row marketing">
 	  {% for link in links %}
-	  <div class="col-sm-6 col-md-4">
+	  <div id="card-link-{{ link.id }}" class="col-sm-6 col-md-4">
 	    <div class="thumbnail">
 	      <div class="caption caption-title">
 		<span class="glyphicon glyphicon-bookmark"></span> <span>{{ link.title|default:link.simple_url  }}</span>
@@ -20,6 +20,15 @@
 		<p>
 		  <span class="glyphicon glyphicon-link"></span> <small><a href="{{ link.url }}" target="_blank">{{ link.simple_url }}</a></small>
 		  <br/>
+		  {% if user.is_authenticated %}
+		  <a class="toggle-link-public pull-right" href="#">
+		    {% if link.is_public %}
+                      <span title="Click to make private" class="glyphicon glyphicon-eye-open"></span>
+		    {% else %}
+                      <span title="Click to make public" class="glyphicon glyphicon-eye-close"></span>
+		    {% endif %}
+		  </a>
+		  {% endif %}
 		  <span title="{{ link.created_at }}" class="glyphicon glyphicon-time"></span> <small>{{ link.created_at |timesince }}</small>
 		</p>
 	      </div>
@@ -29,5 +38,16 @@
       </div>
 {% endblock %}
 {% block js_footer %}
-  <script>$('.glyphicon-time').tooltip();</script>
+  <script>$('.glyphicon-time,.glyphicon-eye-open,.glyphicon-eye-close').tooltip();</script>
+  <script src="{% static 'js/jquery.cookie.js' %}"></script>
+  <script src="{% static 'js/bokmarken.js' %}"></script>
+  <script>
+  var doc = $(document);
+  $(".toggle-link-public").click(function(event) {
+      states = {on: 'glyphicon-eye-open', off: 'glyphicon-eye-close'}
+      doc.trigger('toggleLinkPublic', [$(this), states]);
+      event.preventDefault();
+  });
+  </script>
+
 {% endblock %}

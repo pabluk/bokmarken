@@ -13,7 +13,7 @@ class LinkResource(ModelResource):
         queryset = Link.objects.all()
         resource_name = 'link'
         fields = ['url', 'is_public', 'auto_update']
-        allow_methods = ['get', 'post']
+        allow_methods = ['get', 'post', 'patch']
         authentication = MultiAuthentication(SessionAuthentication(), ApiKeyAuthentication())
         authorization = Authorization()
         validation = FormValidation(form_class=LinkForm)
