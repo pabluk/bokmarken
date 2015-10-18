@@ -7,8 +7,8 @@ Bokmärken is a Swedish word, meaning _Bookmarks_ in English.
 
 Bokmärken was heavily inspired by Minne, a linkshelf project of [socketubs](https://github.com/socketubs).
 
-You can see it in action at [bokmarken.com](http://bokmarken.com/).  
-It also includes a REST API to import/export and play with your links. For details and examples see [bokmarken.com/api](http://bokmarken.com/api/).
+You can see it in action at [bokmarken.seminar.io](http://bokmarken.seminar.io/).  
+It also includes a REST API to import/export and play with your links. For details and examples see [bokmarken.com/api](http://bokmarken.seminar.io/api/).
 
 [![Build Status](https://travis-ci.org/pabluk/bokmarken.png?branch=master)](https://travis-ci.org/pabluk/bokmarken)
 
@@ -18,9 +18,9 @@ Screenshots
 
 A responsive design for every device.
 
-[![Desktop screenshot](http://bokmarken.com/static/screenshots/desktop-lo-res.jpg)](http://bokmarken.com/static/screenshots/desktop-hi-res.png)
+[![Desktop screenshot](http://bokmarken.seminar.io/static/screenshots/desktop-lo-res.jpg)](http://bokmarken.seminar.io/static/screenshots/desktop-hi-res.png)
 
-[![Mobile screenshot](http://bokmarken.com/static/screenshots/nexus4-lo-res.jpg)](http://bokmarken.com/static/screenshots/nexus4-hi-res.png)
+[![Mobile screenshot](http://bokmarken.seminar.io/static/screenshots/nexus4-lo-res.jpg)](http://bokmarken.seminar.io/static/screenshots/nexus4-hi-res.png)
 
 
 Installation
