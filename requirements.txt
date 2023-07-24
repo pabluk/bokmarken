@@ -5,7 +5,7 @@ django-activelink==0.4
 django-registration==1.0
 django-tastypie==0.11.0
 libgravatar==0.2.2
-lxml==3.2.4
+lxml==4.9.1
 python-dateutil==2.2
 python-mimeparse==0.1.4
 requests==2.31.0
