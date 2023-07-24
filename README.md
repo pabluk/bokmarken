@@ -7,10 +7,7 @@ Bokmärken is a Swedish word, meaning _Bookmarks_ in English.
 
 Bokmärken was heavily inspired by Minne, a linkshelf project of [socketubs](https://github.com/socketubs).
 
-You can see it in action at [bokmarken.seminar.io](http://bokmarken.seminar.io/).  
-It also includes a REST API to import/export and play with your links. For details and examples see [bokmarken.com/api](http://bokmarken.seminar.io/api/).
-
-[![Build Status](https://travis-ci.org/pabluk/bokmarken.png?branch=master)](https://travis-ci.org/pabluk/bokmarken)
+It also includes a REST API to import/export and play with your links.
 
 
 Screenshots
@@ -18,9 +15,9 @@ Screenshots
 
 A responsive design for every device.
 
-[![Desktop screenshot](http://bokmarken.seminar.io/static/screenshots/desktop-lo-res.jpg)](http://bokmarken.seminar.io/static/screenshots/desktop-hi-res.png)
+[![Desktop screenshot](bokmarken/static/screenshots/desktop-lo-res.jpg)](bokmarken/static/screenshots/desktop-hi-res.png)
 
-[![Mobile screenshot](http://bokmarken.seminar.io/static/screenshots/nexus4-lo-res.jpg)](http://bokmarken.seminar.io/static/screenshots/nexus4-hi-res.png)
+[![Mobile screenshot](bokmarken/static/screenshots/nexus4-lo-res.jpg)](bokmarken/static/screenshots/nexus4-hi-res.png)
 
 
 Installation
@@ -38,9 +35,10 @@ and create a `virtualenv`:
 cd ~/
 git clone https://github.com/pabluk/bokmarken.git
 cd bokmarken
-virtualenv virtenv
-source virtenv/bin/activate
+virtualenv venv
+source venv/bin/activate
 pip install -r requirements.txt
+edit bokmarken/settings.py # Set SECRET_KEY
 python manage.py syncdb --migrate --noinput
 python manage.py createsuperuser --username=admin --email=admin@localhost  # enter a password for the admin user
 python manage.py runserver
