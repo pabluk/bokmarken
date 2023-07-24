@@ -15,9 +15,9 @@ Screenshots
 
 A responsive design for every device.
 
-[![Desktop screenshot](bokmarken/static/screenshots/desktop-lo-res.jpg)](bokmarken/static/screenshots/desktop-hi-res.png)
+[![Desktop screenshot](bokmarken/static/screenshots/desktop-lo-res.png)](bokmarken/static/screenshots/desktop-hi-res.png)
 
-[![Mobile screenshot](bokmarken/static/screenshots/nexus4-lo-res.jpg)](bokmarken/static/screenshots/nexus4-hi-res.png)
+[![Mobile screenshot](bokmarken/static/screenshots/nexus4-lo-res.png)](bokmarken/static/screenshots/nexus4-hi-res.png)
 
 
 Installation
